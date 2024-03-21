@@ -30,7 +30,7 @@ app.get("/api/diagram", cleanUpOlderFiles, (req: Request, resp: Response) => {
 
   writeFileSync("temp-file.py", req.body, "utf-8");
 
-  const terminal = spawn("python", ["temp-file.py"]);
+  const terminal = spawn(".venv/bin/python3", ["temp-file.py"]);
 
   terminal.on("close", () => {
     glob("*.png").then((files) =>
